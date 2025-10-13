@@ -27,4 +27,9 @@ export class ProductService {
   public deleteProduct(product_id : number): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/product/admin/${product_id}` );
   }
+
+  public getProductById(product_id : number): Observable<Product>{
+  return this.http.get<Product>(`${this.apiServerUrl}/product/${product_id}`);
+  }
 }
+
