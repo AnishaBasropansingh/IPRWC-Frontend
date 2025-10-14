@@ -1,1 +1,13 @@
-<p>product-detail.component works!</p>
+@if (product) {
+  <div class="product-container">
+    @for (item of [product]; track item.product_id) {
+      <div class="product-card">
+        <h3 class="product-name">{{ item.name }}</h3>
+        <p class="product-price">{{ item.price | currency: 'EUR' }}</p>
+        <p class="product-description">{{ item.description }}</p>
+      </div>
+    }
+  </div>
+}
+<h1>detailpage</h1>
+<p>Huidig product ID: {{ route.snapshot.paramMap.get('id') }}</p>

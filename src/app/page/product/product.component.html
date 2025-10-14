@@ -1,9 +1,9 @@
 <div class="product-container">
   @for (product of products; track product.product_id) {
-    <a routerLink="/product-detail">
+    <a [routerLink]="['/product', product.product_id]">
       <div class="product-card">
-          <h3 class="product-name">{{ product.name }}</h3>
-          <p class="product-price">{{ product.price | currency: 'EUR'}}</p>
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-price">{{ product.price | currency: 'EUR' }}</p>
       </div>
     </a>
   }

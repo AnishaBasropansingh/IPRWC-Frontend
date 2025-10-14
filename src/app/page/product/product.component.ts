@@ -24,7 +24,7 @@ export class ProductComponent implements OnInit {
   public getProducts(): void {
     this.productService.getProducts().subscribe({
       next: (response) => (this.products = response),
-      error: (err) => alert(err),
+      error: (err) => err,
     });
   }
 
