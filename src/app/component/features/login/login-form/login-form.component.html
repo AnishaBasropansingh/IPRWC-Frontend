@@ -1,1 +1,32 @@
-<p>login-form.component works!</p>
+<div class="login-container">
+  <form class="login-form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <h2>Inloggen</h2>
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="email"
+        required
+        placeholder="jouw@email.com"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Wachtwoord</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="password"
+        required
+        placeholder="Wachtwoord"
+      />
+    </div>
+    <button type="submit" [disabled]="loginForm.invalid">Inloggen</button>
+    @for (err of errorMessage ? [errorMessage] : []; track err) {
+      <p class="error">{{ err }}</p>
+    }
+  </form>
+</div>
