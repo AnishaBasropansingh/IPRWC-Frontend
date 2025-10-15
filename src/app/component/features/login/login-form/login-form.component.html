@@ -1,32 +1,42 @@
 <div class="login-container">
-  <form class="login-form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
-    <h2>Inloggen</h2>
-    <div class="form-group">
-      <label for="email">E-mail</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        [(ngModel)]="email"
-        required
-        placeholder="jouw@email.com"
-      />
-    </div>
+  @if (!isLoggedIn) {
+    <form class="login-form" (ngSubmit)="onSubmit()">
+      <h2>Inloggen</h2>
 
-    <div class="form-group">
-      <label for="password">Wachtwoord</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        [(ngModel)]="password"
-        required
-        placeholder="Wachtwoord"
-      />
+      <div class="form-group">
+        <label for="email">E-mailadres</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Vul je e-mailadres in"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Wachtwoord</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Vul je wachtwoord in"
+          required
+        />
+      </div>
+
+      <button type="submit">Inloggen</button>
+
+      @if (errorMessage) {
+        <p class="error">{{ errorMessage }}</p>
+      }
+    </form>
+  } @else {
+    <div class="login-form">
+      <h2>Welkom, {{ localStorage.getItem('email') }}</h2>
+      <button (click)="logout()">Uitloggen</button>
     </div>
-    <button type="submit" [disabled]="loginForm.invalid">Inloggen</button>
-    @for (err of errorMessage ? [errorMessage] : []; track err) {
-      <p class="error">{{ err }}</p>
-    }
-  </form>
+  }
 </div>

@@ -9,6 +9,9 @@
   </ul>
   <div class="navbar-actions">
     <li><a routerLink="/login">Login</a></li>
-    <!-- voeg login/logout buttons of klantinfo -->
+    @if (authService.isLoggedIn()) {
+      <button (click)="logout()">Uitloggen</button>
+    } @else {
+    }
   </div>
 </nav>
