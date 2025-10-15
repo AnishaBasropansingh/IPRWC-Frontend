@@ -1,5 +1,5 @@
 <div class="product-container">
-  @for (product of products; track product.product_id) {
+  @for (product of products$|async; track product.product_id) {
     <a [routerLink]="['/product', product.product_id]">
       <div class="product-card">
         <h3 class="product-name">{{ product.name }}</h3>

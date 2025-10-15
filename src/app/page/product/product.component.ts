@@ -1,35 +1,22 @@
-import {Component, OnInit} from '@angular/core';
-import {Product} from '../../model/product';
-import {ProductService} from '../../service/product/product.service';
-import {CommonModule} from '@angular/common';
-import {RouterLink} from '@angular/router';
-
+// product.component.ts
+import { Component } from '@angular/core';
+import { ProductService } from '../../service/product/product.service';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Product } from '../../model/product';
 
 @Component({
   selector: 'app-product',
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.scss'
+  styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements OnInit {
-  public products: Product[] = [];
+export class ProductComponent {
+  public products$: Observable<Product[]>;
 
-  constructor(private productService: ProductService) {}
-
-  ngOnInit() {
-    this.getProducts();
-  }
-
-  public getProducts(): void {
-    this.productService.getProducts().subscribe({
-      next: (response) => (this.products = response),
-      error: (err) => err,
-    });
-  }
-
-  reloadPage(){
-    window.location.reload()
+  constructor(private productService: ProductService) {
+    this.products$ = this.productService.getProducts(); // Observable ready immediately
   }
 }
-
