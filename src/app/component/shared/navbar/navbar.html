@@ -2,16 +2,21 @@
   <div class="navbar-logo">
     <img ngSrc="assets/logo.png" alt="My App Logo" width="500" height="500">
   </div>
+
   <ul class="navbar-links">
     <li><a routerLink="/">Home</a></li>
     <li><a routerLink="/product">Producten</a></li>
     <li><a routerLink="/about">Over ons</a></li>
   </ul>
+
   <div class="navbar-actions">
-    <li><a routerLink="/login">Login</a></li>
-    @if (authService.isLoggedIn()) {
-      <button (click)="logout()">Uitloggen</button>
+    @if (!authService.isLoggedIn()) {
+      <a routerLink="/login" class="btn-login">Login</a>
     } @else {
+      <div class="login-info">
+        <span>Welkom, {{ '' | storedEmail }}</span>
+        <button class="btn-logout" (click)="logout()">Uitloggen</button>
+      </div>
     }
   </div>
 </nav>

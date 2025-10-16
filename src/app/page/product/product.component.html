@@ -1,3 +1,4 @@
+<h1>Bekijk onze producten</h1>
 <div class="product-container">
   @for (product of products$|async; track product.product_id) {
     <a [routerLink]="['/product', product.product_id]">

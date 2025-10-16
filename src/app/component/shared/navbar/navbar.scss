@@ -63,7 +63,8 @@
     align-items: center;
     gap: 1rem;
 
-    li, button {
+    li, .btn-login {
+      text-decoration: none;
       color: white;
       font-size: 1rem;
       background-color: #57213d;
@@ -75,14 +76,37 @@
       font-weight: 600;
       transition: background-color 0.3s ease;
 
-      a {
-        text-decoration: none;
-        color: white;
-      }
-
       &:hover {
         background-color: #351626;
       }
+    }
+
+    .login-info {
+      span {
+        margin-right: 1rem;
+        font-weight: 800;
+        font-size: 1rem;
+        color: #57213d;
+      }
+
+    }
+  }
+
+  .btn-logout {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    background-color: #57213d;
+    list-style: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #351626;
     }
   }
 }

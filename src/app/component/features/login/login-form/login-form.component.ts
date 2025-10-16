@@ -48,7 +48,7 @@ export class LoginFormComponent implements OnInit {
           localStorage.setItem('email', response.email);
           this.storedEmail = response.email;
         }
-        this.router.navigate(['/']); // naar home na login
+        this.router.navigate(['/']);
       },
       error: (error) => {
         console.error('Login mislukt:', error);
