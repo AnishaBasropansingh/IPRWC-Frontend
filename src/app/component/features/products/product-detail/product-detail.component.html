@@ -1,14 +1,29 @@
-<!--&lt;!&ndash; Unwrap the Observable using async &ndash;&gt;-->
-<!--@if (product$ | async = product;) {-->
-<!--  <div class="product-card">-->
-<!--    <h3>{{ product.name }}</h3>-->
-<!--    <p>{{ product.price | currency:'EUR' }}</p>-->
-<!--    <p>{{ product.description }}</p>-->
-<!--  </div>-->
-<!--}-->
+@for (product of [product$ | async]; track product?.product_id) {
+  @if (product) {
+    <div class="product-card">
+      <div class="product-header">
+        <h2 class="product-title">{{ product.name }}</h2>
+      </div>
 
-<!--<ng-template #loading>-->
-<!--  <p>Loading product details...</p>-->
-<!--</ng-template>-->
+      <div class="product-body">
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">Prijs: € {{ product.price | number:'1.2-2' }}</p>
+        <p class="product-stock">Stock: {{product.stock}}</p>
+      </div>
 
-<!--<p>Huidig product ID: {{ route.snapshot.paramMap.get('id') }}</p>-->
+      <div class="product-footer">
+        <button
+          class="btn-add"
+          [disabled]="!authService.isLoggedIn() || product.stock === 0">
+          Voeg toe aan winkelmand
+        </button>
+
+        @if (!authService.isLoggedIn()) {
+          <p class="login-warning">Je moet ingelogd zijn om dit product te bestellen.</p>
+        }
+      </div>
+
+    </div>
+  }
+}
+

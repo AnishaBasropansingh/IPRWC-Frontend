@@ -1,0 +1,85 @@
+.product-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .product-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+
+    .product-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: #333;
+    }
+  }
+
+  .product-body {
+    .product-description {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .product-price {
+      font-weight: 600;
+      color: #57213d;
+      margin-bottom: 8px;
+    }
+
+    .product-stock {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #57213d;
+      margin-bottom: 8px;
+    }
+  }
+
+  .product-footer {
+    justify-content: flex-end;
+
+    .btn-add {
+      padding: 10px 16px;
+      background-color: #57213d;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:disabled {
+        background-color: #aaa;
+        cursor: not-allowed;
+        padding: 10px 16px;
+      }
+
+      &:hover:not(:disabled) {
+        background-color: #351626;
+      }
+    }
+
+    .login-warning{
+      font-weight: 300;
+      font-size: 14px;
+      color: red;
+    }
+  }
+}
+
+/* Optioneel: responsive */
+@media (max-width: 500px) {
+  .product-card {
+    padding: 16px;
+    .product-title {
+      font-size: 1.3rem;
+    }
+  }
+}
