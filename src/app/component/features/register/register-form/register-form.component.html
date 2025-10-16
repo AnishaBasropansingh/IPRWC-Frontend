@@ -1,0 +1,34 @@
+<div class="register-container">
+  <form class="register-form" (ngSubmit)="onSubmit()">
+    <h2>Registreren</h2>
+
+    @if(successMessage) {
+      <p class="success">{{ successMessage }}</p>
+    }
+
+    @if(errorMessage) {
+      <p class="error">{{ errorMessage }}</p>
+    }
+
+    <div class="form-group">
+      <label for="email">E-mailadres</label>
+      <input type="email" id="email" name="email" [(ngModel)]="email" placeholder="Vul je e-mailadres in" required />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Wachtwoord</label>
+      <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="Vul je wachtwoord in" required />
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Bevestig wachtwoord</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" placeholder="Bevestig je wachtwoord" required />
+    </div>
+
+    <button type="submit">Registreren</button>
+
+    <p class="toggle-text">
+      Heb je al een account? <a routerLink="/login">Inloggen</a>
+    </p>
+  </form>
+</div>

@@ -2,7 +2,9 @@
   @if (!isLoggedIn) {
     <form class="login-form" (ngSubmit)="onSubmit()">
       <h2>Inloggen</h2>
-
+      @if(errorMessage) {
+        <p class="error">{{ errorMessage }}</p>
+      }
       <div class="form-group">
         <label for="email">E-mailadres</label>
         <input
@@ -14,7 +16,6 @@
           required
         />
       </div>
-
       <div class="form-group">
         <label for="password">Wachtwoord</label>
         <input
@@ -26,12 +27,10 @@
           required
         />
       </div>
-
       <button type="submit">Inloggen</button>
-
-      @if (errorMessage) {
-        <p class="error">{{ errorMessage }}</p>
-      }
+      <p>
+        Nog geen account? <a routerLink="/register">Registreren</a>
+      </p>
     </form>
   } @else {
     <div class="login-form">

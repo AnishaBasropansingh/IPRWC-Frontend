@@ -5,6 +5,7 @@ import {About} from './page/about/about';
 import {NgModule} from '@angular/core';
 import {ProductDetailComponent} from './component/features/products/product-detail/product-detail.component';
 import {LoginFormComponent} from './component/features/login/login-form/login-form.component';
+import {RegisterFormComponent} from './component/features/register/register-form/register-form.component';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'product/:id', component: ProductDetailComponent},
   { path: 'about', component: About },
   { path: 'login', component: LoginFormComponent },
+  { path: 'register', component: RegisterFormComponent },
 ];
 
 @NgModule({

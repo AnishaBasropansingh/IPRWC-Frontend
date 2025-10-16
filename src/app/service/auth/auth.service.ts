@@ -19,6 +19,10 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${this.apiServerUrl}/auth/login`, user);
   }
 
+  public registerUser(user: { email: string; password: string }): Observable<any> {
+    return this.http.post<any>(`${this.apiServerUrl}/auth/register`, user);
+  }
+
   public logout(): void {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.removeItem('token');
