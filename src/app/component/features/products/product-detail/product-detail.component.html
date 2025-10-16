@@ -1,18 +1,14 @@
-@if (loading) {
-  <p>Loading product...</p>
-}
+<!--&lt;!&ndash; Unwrap the Observable using async &ndash;&gt;-->
+<!--@if (product$ | async = product;) {-->
+<!--  <div class="product-card">-->
+<!--    <h3>{{ product.name }}</h3>-->
+<!--    <p>{{ product.price | currency:'EUR' }}</p>-->
+<!--    <p>{{ product.description }}</p>-->
+<!--  </div>-->
+<!--}-->
 
-@if (!loading && product) {
-  <div class="product-container">
-    @for (item of [product]; track item.product_id) {
-      <div class="product-card">
-        <h3 class="product-name">{{ item.name }}</h3>
-        <p class="product-price">{{ item.price | currency:'EUR' }}</p>
-        <p class="product-description">{{ item.description }}</p>
-      </div>
-    }
-  </div>
-}
+<!--<ng-template #loading>-->
+<!--  <p>Loading product details...</p>-->
+<!--</ng-template>-->
 
-<h1>Detail Page</h1>
-<p>Huidig product ID: {{ route.snapshot.paramMap.get('id') }}</p>
+<!--<p>Huidig product ID: {{ route.snapshot.paramMap.get('id') }}</p>-->
