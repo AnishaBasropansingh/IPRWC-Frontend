@@ -6,6 +6,9 @@ import {NgModule} from '@angular/core';
 import {ProductDetailComponent} from './component/features/products/product-detail/product-detail.component';
 import {LoginFormComponent} from './component/features/login/login-form/login-form.component';
 import {RegisterFormComponent} from './component/features/register/register-form/register-form.component';
+import {Admin} from './page/admin/admin';
+import {RoleGuard} from './guard/RoleGuard';
+import {UnauthorizedComponent} from './component/features/adminpanel/unauthorized/unauthorized.component';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -15,6 +18,9 @@ export const routes: Routes = [
   { path: 'about', component: About },
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
+  { path: 'admin', component: Admin, canActivate: [RoleGuard] },
+  { path: 'unauthorized', component: UnauthorizedComponent}
+
 ];
 
 @NgModule({

@@ -1,7 +1,6 @@
-import {User} from './user';
-
 export interface LoginResponse {
+  id: number;
   email: string;
   token: string;
-  user: User;
+  role: string;
 }
