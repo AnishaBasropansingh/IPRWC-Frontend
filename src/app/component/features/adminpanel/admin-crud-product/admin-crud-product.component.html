@@ -1,1 +1,24 @@
-<p>CRUD product</p>
+<div class="crud-create">
+  <h1 class="crud-title">CRUD Producten</h1>
+  <button class="btn create" [routerLink]="[]">Create Product</button>
+</div>
+
+<div class="product-list">
+  @for (product of products$ | async; track product.product_id) {
+    <div class="product-card">
+      <div class="product-info">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <p class="price">{{ product.price | currency:'EUR' }}</p>
+      </div>
+      <div class="product-actions">
+        <button class="btn edit" [routerLink]="['/admin-update', product.product_id]">Edit</button>
+
+        <button class="btn delete" (click)="deleteProduct(product.product_id!)">Delete</button>
+      </div>
+    </div>
+  }
+  @empty {
+    <p class="empty">Geen producten beschikbaar</p>
+  }
+</div>

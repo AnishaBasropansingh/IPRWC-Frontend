@@ -56,11 +56,13 @@ export class AuthService {
   }
 
   private getUser(): any | null {
+
     if (!isPlatformBrowser(this.platformId)) return null;
     const userJson = localStorage.getItem('user');
+    console.log(localStorage.getItem('user'))
     return userJson ? JSON.parse(userJson) : null;
-  }
 
+  }
 
   public getToken(): string | null {
     return this.getUser()?.token ?? null;
@@ -77,6 +79,7 @@ export class AuthService {
 
   public saveUser(user: any): void {
     if (isPlatformBrowser(this.platformId)) {
+      console.log("json" + JSON.stringify(user))
       localStorage.setItem('user', JSON.stringify(user));
     }
   }

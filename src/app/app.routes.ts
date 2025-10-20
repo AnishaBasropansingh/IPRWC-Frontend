@@ -9,6 +9,9 @@ import {RegisterFormComponent} from './component/features/register/register-form
 import {Admin} from './page/admin/admin';
 import {RoleGuard} from './guard/RoleGuard';
 import {UnauthorizedComponent} from './component/features/adminpanel/unauthorized/unauthorized.component';
+import {
+  AdminUpdateProductFormComponent
+} from './component/features/adminpanel/admin-update-product-form/admin-update-product-form.component';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -19,8 +22,8 @@ export const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
   { path: 'admin', component: Admin, canActivate: [RoleGuard] },
+  { path: 'admin-update/:id', component: AdminUpdateProductFormComponent, canActivate: [RoleGuard] },
   { path: 'unauthorized', component: UnauthorizedComponent}
-
 ];
 
 @NgModule({

@@ -1,4 +1,3 @@
-// product.component.ts
 import { Component } from '@angular/core';
 import { ProductService } from '../../service/product/product.service';
 import { CommonModule } from '@angular/common';
@@ -17,6 +16,6 @@ export class ProductComponent {
   public products$: Observable<Product[]>;
 
   constructor(private productService: ProductService) {
-    this.products$ = this.productService.getProducts(); // Observable ready immediately
+    this.products$ = this.productService.getProducts();
   }
 }
