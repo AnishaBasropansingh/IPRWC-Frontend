@@ -3,8 +3,8 @@ import { Product } from '../../../../model/product';
 import { ProductService } from '../../../../service/product/product.service';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import {Observable, switchMap} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-admin-crud-product',
