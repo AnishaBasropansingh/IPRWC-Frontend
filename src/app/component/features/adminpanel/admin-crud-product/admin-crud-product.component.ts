@@ -19,7 +19,6 @@ import {map} from 'rxjs/operators';
 })
 export class AdminCrudProductComponent {
   products$!: Observable<Product[]>;
-  selectedProduct?: Product;
   errorMessage = '';
 
   constructor(private productService: ProductService) {
@@ -29,29 +28,6 @@ export class AdminCrudProductComponent {
   loadProducts(): void {
     this.products$ = this.productService.getProducts();
   }
-
-  selectProduct(product: Product): void {
-    this.selectedProduct = { ...product };
-  }
-
-  addProduct(newProduct: Product): void {
-    this.productService.addProduct(newProduct).subscribe({
-      next: () => this.loadProducts(),
-      error: () => this.errorMessage = 'Kan geen producten toevoegen :('
-    });
-  }
-
-  // updateProduct(product: Product) {
-  //   this.products$ = this.products$.pipe(
-  //     switchMap(products =>
-  //       this.productService.updateProduct(product).pipe(
-  //         map(updatedProduct => {
-  //           return products.map(p => p.product_id === updatedProduct.product_id ? updatedProduct : p);
-  //         })
-  //       )
-  //     )
-  //   );
-  // }
 
   deleteProduct(product_id: number) {
     this.products$ = this.products$.pipe(
@@ -63,12 +39,4 @@ export class AdminCrudProductComponent {
       })
     );
   }
-
-  getProduct(product_id: number): void {
-    this.productService.getProductById(product_id).subscribe({
-      next: (data) => this.selectedProduct = data,
-      error: () => this.errorMessage = 'Kan niet alle producten inladen :('
-    });
-  }
-
 }

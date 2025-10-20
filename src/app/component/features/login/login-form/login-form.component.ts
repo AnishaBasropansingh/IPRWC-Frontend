@@ -42,7 +42,6 @@ export class LoginFormComponent implements OnInit {
 
     this.authService.loginUser({ email: this.email, password: this.password }).subscribe({
       next: (response) => {
-        console.log('Inloggen gelukt:', response);
         if (isPlatformBrowser(this.platformId)) {
           localStorage.setItem('token', response.token);
           localStorage.setItem('email', response.email);
@@ -50,16 +49,9 @@ export class LoginFormComponent implements OnInit {
         }
         this.router.navigate(['/']);
       },
-      error: (error) => {
-        console.error('Login mislukt:', error);
+      error: () => {
         this.errorMessage = 'Ongeldige inloggegevens.';
       }
     });
-  }
-
-  logout() {
-    this.authService.logout();
-    this.storedEmail = null;
-    this.router.navigate(['/']);
   }
 }

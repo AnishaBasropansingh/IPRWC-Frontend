@@ -30,11 +30,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this.product$ = this.productService.getProductById(id).pipe(
       takeUntil(this._destroy$),
       map((res: Product) => {
-
         return { ...res, price: res.price / 100 };
       }),
       catchError(err => {
-        console.error('Fout bij ophalen product:', err);
         throw err;
       })
     );

@@ -31,7 +31,6 @@ export class ProductService {
   }): Observable<Product> {
     const token = this.authService.getToken();
     if (!token) {
-      console.error('Geen token gevonden!');
       return throwError(() => new Error('Geen token gevonden'));
     }
 
@@ -39,10 +38,6 @@ export class ProductService {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     });
-
-    console.log('KLOPT DE URL???', `${this.apiServerUrl}/product/admin/${product.product_id}`);
-    console.log('UPDated product:', product);
-    console.log('Token:', token);
 
     return this.http.put<Product>(
       `${this.apiServerUrl}/product/admin/${product.product_id}`,

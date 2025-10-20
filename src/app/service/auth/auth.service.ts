@@ -43,33 +43,16 @@ export class AuthService {
     return !!this.getToken();
   }
 
-  public saveToken(token: string): void {
-    if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('token', token);
-    }
-  }
-
-  public saveEmail(email: string): void {
-    if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('email', email);
-    }
-  }
-
   private getUser(): any | null {
 
     if (!isPlatformBrowser(this.platformId)) return null;
     const userJson = localStorage.getItem('user');
-    console.log(localStorage.getItem('user'))
     return userJson ? JSON.parse(userJson) : null;
 
   }
 
   public getToken(): string | null {
     return this.getUser()?.token ?? null;
-  }
-
-  public getEmail(): string | null {
-    return this.getUser()?.email ?? null;
   }
 
   public getUserRole(): string | null {
@@ -79,10 +62,7 @@ export class AuthService {
 
   public saveUser(user: any): void {
     if (isPlatformBrowser(this.platformId)) {
-      console.log("json" + JSON.stringify(user))
       localStorage.setItem('user', JSON.stringify(user));
     }
   }
-
-
 }

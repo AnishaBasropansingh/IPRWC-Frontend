@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, combineLatest, of } from 'rxjs';
 import { ProductService } from '../../../../service/product/product.service';
 import { CategoryService } from '../../../../service/category/category.service';
-import { Product } from '../../../../model/product';
 import { Category } from '../../../../model/category';
 import {AsyncPipe} from '@angular/common';
 
@@ -58,13 +57,6 @@ export class AdminUpdateProductFormComponent implements OnInit {
     });
   }
 
-  // onSubmit() {
-  // console.log(this.profileForm.value);
-  // this.productService.updateProduct(this.profileForm.value).subscribe((res:any) =>{
-  //   console.log("GELUKT!");
-  // })
-  // }
-
   onSubmit() {
     if (this.profileForm.valid) {
       const updatedProduct = {
@@ -76,12 +68,10 @@ export class AdminUpdateProductFormComponent implements OnInit {
         categorie_id: this.profileForm.value.category
       };
 
-
-      console.log('Updating product:', updatedProduct);
-
       this.productService.updateProduct(updatedProduct).subscribe({
         next: (res) => {
           console.log('GELUKT!', res);
+
         },
         error: (err) => {
           console.error('Update mislukt:', err);
@@ -89,5 +79,4 @@ export class AdminUpdateProductFormComponent implements OnInit {
       });
     }
   }
-
 }

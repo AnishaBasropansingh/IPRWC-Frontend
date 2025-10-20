@@ -6,5 +6,4 @@ export interface Product {
   stock: number;
   imageUrl?: string;
   categorie: { categorie_id: number, name: string };
-  // voeg hier andere velden toe zoals afbeelding etc.
 }
