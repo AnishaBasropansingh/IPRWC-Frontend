@@ -2,13 +2,21 @@
   <div class="navbar-logo">
     <img ngSrc="assets/logo.png" alt="My App Logo" width="500" height="500">
   </div>
-  <ul class="navbar-links">
+
+  <button class="navbar-toggle" (click)="menuOpen = !menuOpen">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
+  <ul class="navbar-links" [class.active]="menuOpen">
     <li><a routerLink="/">Home</a></li>
     <li><a routerLink="/product">Producten</a></li>
     <li><a routerLink="/about">Over ons</a></li>
     <li><a routerLink="/admin">Admin Panel</a></li>
   </ul>
-  <div class="navbar-actions">
+
+  <div class="navbar-actions" [class.active]="menuOpen">
     @if (!authService.isLoggedIn()) {
       <a routerLink="/login" class="btn-login">Login</a>
     } @else {

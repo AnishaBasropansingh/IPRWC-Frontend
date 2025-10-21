@@ -12,6 +12,7 @@ import {StoredEmailPipe} from '../../../pipe/email.pipe'; // pas pad aan!
   styleUrl: './navbar.scss'
 })
 export class Navbar {
+  menuOpen: boolean = false;
   constructor(
     protected authService: AuthService,
     private router: Router,
@@ -22,4 +23,9 @@ export class Navbar {
     this.authService.logout();
     this.router.navigate(['/']);
   }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 }
+
