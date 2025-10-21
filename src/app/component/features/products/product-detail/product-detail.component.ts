@@ -6,6 +6,7 @@ import { takeUntil, map, catchError } from 'rxjs/operators';
 import { Product } from '../../../../model/product';
 import { ProductService } from '../../../../service/product/product.service';
 import {AuthService} from '../../../../service/auth/auth.service';
+import {CartService} from '../../../../service/cart/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -21,7 +22,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    protected authService: AuthService
+    protected authService: AuthService,
+    private cartService: CartService,
   ) {}
 
   ngOnInit() {
@@ -30,12 +32,27 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this.product$ = this.productService.getProductById(id).pipe(
       takeUntil(this._destroy$),
       map((res: Product) => {
-        return { ...res, price: res.price / 100 };
+        return { ...res, price: res.price };
       }),
       catchError(err => {
         throw err;
       })
     );
+  }
+
+  addToCart(product: Product) {
+    if (!this.authService.isLoggedIn()) {
+      alert('Je moet eerst inloggen om dit product te bestellen.');
+      return;
+    }
+
+    if (product.stock === 0) {
+      alert('Dit product is momenteel uitverkocht.');
+      return;
+    }
+
+    this.cartService.addProduct(product);
+    alert(`${product.name} is toegevoegd aan je winkelmand!`);
   }
 
   ngOnDestroy() {

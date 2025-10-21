@@ -1,9 +1,9 @@
 .create-container {
-  max-width: 500px;
+  max-width: 600px;
   margin: 2rem auto;
   padding: 2rem;
   border-radius: 12px;
-  background: #f9fafb;
+  background: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 
   h2 {
@@ -40,7 +40,7 @@
   .btn {
     width: 100%;
     padding: 0.8rem;
-    background: #007bff;
+    background: #6aaf4f;
     color: white;
     border: none;
     border-radius: 8px;
@@ -49,7 +49,7 @@
     transition: background 0.2s ease;
 
     &:hover {
-      background: #0056b3;
+      background: #579141;
     }
   }
 

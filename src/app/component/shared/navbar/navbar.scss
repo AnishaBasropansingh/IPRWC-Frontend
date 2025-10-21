@@ -8,6 +8,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+  list-style: none;
 
   .navbar-logo {
     display: flex;
@@ -61,7 +62,8 @@
     align-items: center;
     gap: 1rem;
 
-    .btn-login, .btn-logout {
+    .btn-login,
+    .btn-logout {
       text-decoration: none;
       color: white;
       font-size: 1rem;
@@ -79,14 +81,35 @@
     }
 
     .login-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
       span {
-        margin-right: 1rem;
         font-weight: 800;
         font-size: 1rem;
         color: #57213d;
       }
+
+      li {
+        display: inline-block;
+
+        a {
+          display: inline-block;
+
+          .img-cart {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+          }
+        }
+      }
     }
   }
+
 
   .navbar-toggle {
     display: none;
@@ -160,3 +183,4 @@
     }
   }
 }
+

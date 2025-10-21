@@ -15,7 +15,8 @@
       <div class="product-footer">
         <button
           class="btn-add"
-          [disabled]="!authService.isLoggedIn() || product.stock === 0">
+          [disabled]="!authService.isLoggedIn() || product.stock === 0"
+          (click)="addToCart(product)">
           Voeg toe aan winkelmand
         </button>
 

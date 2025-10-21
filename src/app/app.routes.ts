@@ -11,10 +11,11 @@ import {RoleGuard} from './guard/RoleGuard';
 import {UnauthorizedComponent} from './component/features/adminpanel/unauthorized/unauthorized.component';
 import {
   AdminUpdateProductFormComponent
-} from './component/features/adminpanel/admin-update-product-form/admin-update-product-form.component';
+} from './component/features/adminpanel/update-product/admin-update-product-form.component';
 import {
   AdminCreateProductFormComponent
-} from './component/features/adminpanel/admin-create-product-form/admin-create-product-form.component';
+} from './component/features/adminpanel/create-product/admin-create-product-form.component';
+import {CartComponent} from './component/features/cart/cart-details/cart.component';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -25,9 +26,10 @@ export const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
   { path: 'admin', component: Admin, canActivate: [RoleGuard] },
-  { path: 'admin-update/:id', component: AdminUpdateProductFormComponent, canActivate: [RoleGuard] },
-  { path: 'admin-create', component: AdminCreateProductFormComponent, canActivate: [RoleGuard] },
-  { path: 'unauthorized', component: UnauthorizedComponent}
+  { path: 'admin-update-product/:id', component: AdminUpdateProductFormComponent, canActivate: [RoleGuard] },
+  { path: 'admin-create-product', component: AdminCreateProductFormComponent, canActivate: [RoleGuard] },
+  { path: 'unauthorized', component: UnauthorizedComponent},
+  { path: 'cart', component: CartComponent, canActivate: [RoleGuard] },
 ];
 
 @NgModule({

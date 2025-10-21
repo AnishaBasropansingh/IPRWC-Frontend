@@ -21,6 +21,7 @@
       <a routerLink="/login" class="btn-login">Login</a>
     } @else {
       <div class="login-info">
+        <li><a routerLink="/cart"><img class="img-cart" src="assets/shopping-cart.png" alt="shopping-cart"/></a></li>
         <span>Welkom, {{ '' | storedEmail }}</span>
         <button class="btn-logout" (click)="logout()">Uitloggen</button>
       </div>
