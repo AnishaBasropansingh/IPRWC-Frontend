@@ -1,0 +1,20 @@
+<h2>Winkelwagen</h2>
+
+@if (cartItems$ | async; as cartItems) {
+
+  @if (cartItems.length === 0) {
+    <p>Je winkelwagen is leeg.</p>
+  }
+
+  @if (cartItems.length > 0) {
+    @for (product of cartItems; track product.product_id) {
+      <div class="cart-item">
+        <p>{{ product.name }} - € {{ product.price | number:'1.2-2' }}</p>
+        <button (click)="removeFromCart(product.product_id!)">Verwijder</button>
+      </div>
+    }
+
+    <p>Totaal: € {{ getTotal(cartItems) | number:'1.2-2' }}</p>
+    <button (click)="clearCart()">Winkelwagen leegmaken</button>
+  }
+}
