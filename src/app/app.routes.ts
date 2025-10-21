@@ -12,6 +12,9 @@ import {UnauthorizedComponent} from './component/features/adminpanel/unauthorize
 import {
   AdminUpdateProductFormComponent
 } from './component/features/adminpanel/admin-update-product-form/admin-update-product-form.component';
+import {
+  AdminCreateProductFormComponent
+} from './component/features/adminpanel/admin-create-product-form/admin-create-product-form.component';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -23,6 +26,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterFormComponent },
   { path: 'admin', component: Admin, canActivate: [RoleGuard] },
   { path: 'admin-update/:id', component: AdminUpdateProductFormComponent, canActivate: [RoleGuard] },
+  { path: 'admin-create', component: AdminCreateProductFormComponent, canActivate: [RoleGuard] },
   { path: 'unauthorized', component: UnauthorizedComponent}
 ];
 

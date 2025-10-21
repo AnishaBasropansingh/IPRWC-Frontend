@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Observable, combineLatest, of } from 'rxjs';
 import { ProductService } from '../../../../service/product/product.service';
 import { CategoryService } from '../../../../service/category/category.service';
@@ -26,7 +26,8 @@ export class AdminUpdateProductFormComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private productService: ProductService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -71,7 +72,7 @@ export class AdminUpdateProductFormComponent implements OnInit {
       this.productService.updateProduct(updatedProduct).subscribe({
         next: (res) => {
           console.log('GELUKT!', res);
-
+          this.router.navigate(['/admin']);
         },
         error: (err) => {
           console.error('Update mislukt:', err);

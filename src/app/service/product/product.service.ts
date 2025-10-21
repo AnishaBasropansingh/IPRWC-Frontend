@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Product} from '../../model/product';
 import { AuthService } from '../auth/auth.service';
+import {CreateProduct} from '../../model/createProduct';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,15 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.apiServerUrl}/product`);
   }
 
-  public addProduct(product : Product): Observable<Product> {
-    return this.http.post<Product>(`${this.apiServerUrl}/product/admin`, product );
-  }
+  public addProduct(product: CreateProduct): Observable<CreateProduct> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    });
 
+    return this.http.post<CreateProduct>(`${this.apiServerUrl}/product/admin`, product, { headers });
+  }
   public updateProduct(product: {
     product_id: number;
     name: string;
