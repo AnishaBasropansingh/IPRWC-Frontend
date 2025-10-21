@@ -18,10 +18,6 @@ export class CartComponent {
     this.cartItems$ = this.cartService.getCartItems();
   }
 
-  addToCart(product: Product) {
-    this.cartService.addProduct(product);
-  }
-
   removeFromCart(productId: number) {
     this.cartService.removeProduct(productId);
   }

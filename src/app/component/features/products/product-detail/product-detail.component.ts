@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil, map, catchError } from 'rxjs/operators';
@@ -18,12 +18,14 @@ import {CartService} from '../../../../service/cart/cart.service';
 export class ProductDetailComponent implements OnInit, OnDestroy {
   public product$!: Observable<Product>;
   private _destroy$ = new Subject<void>();
+  successMessage = '';
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
     protected authService: AuthService,
     private cartService: CartService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -52,7 +54,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     }
 
     this.cartService.addProduct(product);
-    alert(`${product.name} is toegevoegd aan je winkelmand!`);
+    this.router.navigate(['/cart']);
   }
 
   ngOnDestroy() {
