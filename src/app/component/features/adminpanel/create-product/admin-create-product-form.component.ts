@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {CreateProduct} from '../../../../model/createProduct';
 
 @Component({
-  selector: 'app-admin-create-product-form',
+  selector: 'app-create-product',
   standalone: true,
   templateUrl: './admin-create-product-form.component.html',
   imports: [

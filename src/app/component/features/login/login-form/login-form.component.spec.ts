@@ -17,7 +17,7 @@ describe('LoginFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create-product', () => {
     expect(component).toBeTruthy();
   });
 });

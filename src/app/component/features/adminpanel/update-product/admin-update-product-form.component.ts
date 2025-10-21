@@ -8,7 +8,7 @@ import { Category } from '../../../../model/category';
 import {AsyncPipe} from '@angular/common';
 
 @Component({
-  selector: 'app-admin-update-product-form',
+  selector: 'app-update-product',
   templateUrl: './admin-update-product-form.component.html',
   imports: [
     AsyncPipe,

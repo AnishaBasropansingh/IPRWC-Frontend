@@ -1,6 +1,6 @@
 <div class="crud-create">
   <h1 class="crud-title">CRUD Producten</h1>
-  <button class="btn create" [routerLink]="['/admin-create']">Create Product</button>
+  <button class="btn create" [routerLink]="['/admin-create-product']">Create Product</button>
 </div>
 
 <div class="product-list">
@@ -12,7 +12,7 @@
         <p class="price">{{ product.price | currency:'EUR' }}</p>
       </div>
       <div class="product-actions">
-        <button class="btn edit" [routerLink]="['/admin-update', product.product_id]">Edit</button>
+        <button class="btn edit" [routerLink]="['/admin-update-product', product.product_id]">Edit</button>
 
         <button class="btn delete" (click)="deleteProduct(product.product_id!)">Delete</button>
       </div>
