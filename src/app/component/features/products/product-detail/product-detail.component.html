@@ -9,16 +9,23 @@
       <div class="product-body">
         <p class="product-description">{{ product.description }}</p>
         <p class="product-price">Prijs: € {{ product.price | number:'1.2-2' }}</p>
-        <p class="product-stock">Stock: {{product.stock}}</p>
       </div>
 
       <div class="product-footer">
-        <button
-          class="btn-add"
-          [disabled]="!authService.isLoggedIn() || product.stock === 0"
-          (click)="addToCart(product)">
-          Voeg toe aan winkelmand
-        </button>
+        <p class="product-stock">
+          Voorraad:
+          <span
+            class="stock-label"
+            [ngClass]="cartService.inStock(product) ? 'in-stock' : 'out-of-stock'">
+    {{ cartService.getStock(product.product_id) }}
+  </span>
+        </p>
+          <button
+            class="btn-add"
+            [disabled]="!authService.isLoggedIn() || product.stock === 0"
+            (click)="addToCart(product)">
+            Voeg toe aan winkelmand
+          </button>
 
         @if (!authService.isLoggedIn()) {
           <p class="login-warning">Je moet ingelogd zijn om dit product te bestellen.</p>

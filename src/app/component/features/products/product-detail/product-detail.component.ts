@@ -18,14 +18,13 @@ import {CartService} from '../../../../service/cart/cart.service';
 export class ProductDetailComponent implements OnInit, OnDestroy {
   public product$!: Observable<Product>;
   private _destroy$ = new Subject<void>();
-  successMessage = '';
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
     protected authService: AuthService,
-    private cartService: CartService,
-    private router: Router,
+    protected cartService: CartService,
+    private router : Router
   ) {}
 
   ngOnInit() {
@@ -43,18 +42,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   addToCart(product: Product) {
-    if (!this.authService.isLoggedIn()) {
-      alert('Je moet eerst inloggen om dit product te bestellen.');
-      return;
-    }
-
-    if (product.stock === 0) {
-      alert('Dit product is momenteel uitverkocht.');
-      return;
-    }
+    if (!this.cartService.inStock(product)) return;
 
     this.cartService.addProduct(product);
-    this.router.navigate(['/cart']);
   }
 
   ngOnDestroy() {

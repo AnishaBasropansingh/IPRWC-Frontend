@@ -76,6 +76,29 @@ h1 {
       font-size: 14px;
       color: red;
     }
+
+    .product-stock {
+      font-weight: 500;
+      margin: 10px 0;
+      font-size: 1rem;
+
+      .stock-label {
+        display: inline-block;
+        font-weight: bold;
+        color: #fff;
+        text-align: center;
+        transition: background-color 0.3s ease;
+      }
+
+      .in-stock {
+        color: #6aaf4f;
+      }
+
+      .out-of-stock {
+        color: #e76f51;
+      }
+    }
+
   }
 }
 
