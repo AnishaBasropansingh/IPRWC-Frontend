@@ -16,6 +16,9 @@ import {
   AdminCreateProductFormComponent
 } from './component/features/adminpanel/create-product/admin-create-product-form.component';
 import {CartComponent} from './component/features/cart/cart-details/cart.component';
+import {OrderDetailsComponent} from './component/features/checkout/order-details/order-details.component';
+import {OrderComponent} from './page/order/order.component';
+import {UserGuard} from './guard/UserGuard';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -29,7 +32,9 @@ export const routes: Routes = [
   { path: 'admin-update-product/:id', component: AdminUpdateProductFormComponent, canActivate: [RoleGuard] },
   { path: 'admin-create-product', component: AdminCreateProductFormComponent, canActivate: [RoleGuard] },
   { path: 'unauthorized', component: UnauthorizedComponent},
-  { path: 'cart', component: CartComponent, canActivate: [RoleGuard] },
+  { path: 'cart', component: CartComponent, canActivate: [UserGuard] },
+  { path: 'order', component: OrderComponent, canActivate: [UserGuard] },
+  { path: 'order-detail', component: OrderDetailsComponent, canActivate: [UserGuard]},
 ];
 
 @NgModule({

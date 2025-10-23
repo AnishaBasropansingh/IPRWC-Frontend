@@ -55,7 +55,7 @@ h1 {
     }
 
     button {
-      background-color: #3b81c6;
+      background-color: #e9c46a;
       color: white;
       border: none;
       padding: 0.4rem 0.8rem;
@@ -64,8 +64,22 @@ h1 {
       transition: background-color 0.2s ease;
 
       &:hover {
-        background-color: #30689f;
+        background-color: #f4a261;
       }
+    }
+  }
+
+  button {
+    background-color: #e76f51;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #e1614f;
     }
   }
 }

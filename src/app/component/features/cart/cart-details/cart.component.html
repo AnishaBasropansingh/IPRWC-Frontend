@@ -18,6 +18,8 @@
       <p>Totaal: € {{ getTotal(cartItems) | number:'1.2-2' }}</p>
       <button (click)="clearCart()">Winkelwagen leegmaken</button>
     </div>
+    <button class="btn-bestel" (click)="checkout()">Bestelling plaatsen</button>
+
   }
 </div>
 }

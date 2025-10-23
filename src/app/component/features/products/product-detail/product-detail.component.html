@@ -16,9 +16,8 @@
           Voorraad:
           <span
             class="stock-label"
-            [ngClass]="cartService.inStock(product) ? 'in-stock' : 'out-of-stock'">
-    {{ cartService.getStock(product.product_id) }}
-  </span>
+            [ngClass]="cartService.inStock(product) ? 'in-stock' : 'out-of-stock'">{{ cartService.getStock(product.product_id) }}
+          </span>
         </p>
           <button
             class="btn-add"

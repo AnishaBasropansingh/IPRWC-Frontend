@@ -15,12 +15,13 @@ export class AuthService {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  public loginUser(user: { email: string; password: string }): Observable<LoginResponse> {
+  public loginUser(user: { username?: string; email: string; password: string; }): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiServerUrl}/auth/login`, user)
       .pipe(
         tap(response => {
           this.saveUser({
             id: response.id,
+            username: response.username,
             email: response.email,
             role: response.role,
             token: response.token
@@ -29,7 +30,7 @@ export class AuthService {
       );
   }
 
-  public registerUser(user: { email: string; password: string }): Observable<any> {
+  public registerUser(user: { username: string; email: string; password: string }): Observable<any> {
     return this.http.post<any>(`${this.apiServerUrl}/auth/register`, user);
   }
 
@@ -43,13 +44,19 @@ export class AuthService {
     return !!this.getToken();
   }
 
-  private getUser(): any | null {
+  getUser(): any | null {
 
     if (!isPlatformBrowser(this.platformId)) return null;
     const userJson = localStorage.getItem('user');
     return userJson ? JSON.parse(userJson) : null;
 
   }
+
+  public getUserId(): number | null {
+    const user = this.getUser();
+    return user?.id ?? null;
+  }
+
 
   public getToken(): string | null {
     return this.getUser()?.token ?? null;
@@ -58,7 +65,6 @@ export class AuthService {
   public getUserRole(): string | null {
     return this.getUser()?.role ?? null;
   }
-
 
   public saveUser(user: any): void {
     if (isPlatformBrowser(this.platformId)) {

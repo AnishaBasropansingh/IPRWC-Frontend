@@ -43,7 +43,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   addToCart(product: Product) {
     if (!this.cartService.inStock(product)) return;
-
     this.cartService.addProduct(product);
   }
 

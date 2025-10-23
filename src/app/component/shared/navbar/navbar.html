@@ -13,6 +13,7 @@
     <li><a routerLink="/">Home</a></li>
     <li><a routerLink="/product">Producten</a></li>
     <li><a routerLink="/about">Over ons</a></li>
+    <li><a routerLink="/order">Bestelling</a></li>
     <li><a routerLink="/admin">Admin Panel</a></li>
   </ul>
 
@@ -22,7 +23,7 @@
     } @else {
       <div class="login-info">
         <li><a routerLink="/cart"><img class="img-cart" src="assets/shopping-cart.png" alt="shopping-cart"/></a></li>
-        <span>Welkom, {{ '' | storedEmail }}</span>
+        <span>Welkom, {{ '' | storedUsername }}</span>
         <button class="btn-logout" (click)="logout()">Uitloggen</button>
       </div>
     }

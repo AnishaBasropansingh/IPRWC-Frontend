@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent {
+  username: string = '';
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
@@ -36,9 +37,10 @@ export class RegisterFormComponent {
       return;
     }
 
-    this.authService.registerUser({ email: this.email, password: this.password }).subscribe({
+    this.authService.registerUser({ username: this.username, email: this.email, password: this.password }).subscribe({
       next: (response) => {
         console.log('Registratie gelukt:', response);
+        console.log(localStorage.getItem('name'));
         this.successMessage = 'Registratie gelukt! Je kunt nu inloggen.';
         setTimeout(() => this.router.navigate(['/login']), 2000);
       },

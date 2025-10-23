@@ -2,12 +2,12 @@ import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../service/auth/auth.service';
 import {NgOptimizedImage} from '@angular/common';
-import {StoredEmailPipe} from '../../../pipe/email.pipe'; // pas pad aan!
+import {StoredUsernamePipe} from '../../../pipe/username.pipe';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, NgOptimizedImage, StoredEmailPipe],
+  imports: [RouterLink, NgOptimizedImage, StoredUsernamePipe],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })

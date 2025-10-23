@@ -11,6 +11,11 @@
     }
 
     <div class="form-group">
+      <label for="username">Gebruikersnaam</label>
+      <input type="text" id="username" name="username" [(ngModel)]="username" placeholder="Vul je gebruikersnaam in" required />
+    </div>
+
+    <div class="form-group">
       <label for="email">E-mailadres</label>
       <input type="email" id="email" name="email" [(ngModel)]="email" placeholder="Vul je e-mailadres in" required />
     </div>

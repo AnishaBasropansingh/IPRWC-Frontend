@@ -11,10 +11,11 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
+  username: string = '';
   email: string = '';
   password: string = '';
   errorMessage: string = '';
-  storedEmail: string | null = null;
+  storedUsername: string | null = null;
 
   constructor(
     private authService: AuthService,
@@ -24,7 +25,7 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.storedEmail = localStorage.getItem('email');
+      this.storedUsername = localStorage.getItem('username');
     }
   }
 
@@ -40,12 +41,14 @@ export class LoginFormComponent implements OnInit {
       return;
     }
 
-    this.authService.loginUser({ email: this.email, password: this.password }).subscribe({
+    this.authService.loginUser({ username: this.username, email: this.email, password: this.password }).subscribe({
       next: (response) => {
         if (isPlatformBrowser(this.platformId)) {
           localStorage.setItem('token', response.token);
           localStorage.setItem('email', response.email);
-          this.storedEmail = response.email;
+          localStorage.setItem('username', response.username);
+
+          this.storedUsername = response.username;
         }
         this.router.navigate(['/']);
       },

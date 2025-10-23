@@ -1,0 +1,49 @@
+<!--<h1>Bekijk je bestellingen</h1>-->
+<!--<div class="order-container">-->
+<!--  @for (order of orders$|async; track order.order_id) {-->
+<!--&lt;!&ndash;    <a [routerLink]="['/order', order.order_id]">&ndash;&gt;-->
+<!--    <div class="order-card">-->
+<!--      <h3 class="order-number">Bestelling #{{ order.order_id }}</h3>-->
+<!--&lt;!&ndash;      <h3 class="order-number">Gebruiker: {{ order. }}</h3>&ndash;&gt;-->
+
+<!--    <div class="order-products">-->
+<!--      @for (product of order.products; track product.product_id) {-->
+<!--        <p class="product-name">{{ product.name }} - €{{ product.price | number:'1.2-2' }}</p>-->
+<!--      }-->
+<!--    </div>-->
+
+<!--      <p class="order-price">Totaal: {{ order.totalPrice | currency:'EUR' }}</p>-->
+<!--    </div>-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+<!--  }-->
+<!--  @empty {-->
+<!--    <p>Geen bestellingen :(</p>-->
+<!--  }-->
+<!--</div>-->
+
+<h1>Bekijk je bestellingen</h1>
+<div class="order-container">
+  @for (order of orders$|async; track order.order_id) {
+    <div class="order-card">
+      <h3 class="order-number">Bestelling #{{ order.order_id }}</h3>
+
+      <div class="order-products">
+        @for (item of getProductCounts(order.products); track item.product.product_id) {
+          <p class="product-name">
+            {{ item.product.name }} (x{{ item.quantity }}) - €{{ item.product.price | number:'1.2-2' }}
+          </p>
+        }
+      </div>
+
+      <p class="order-price">Totaal: {{ order.totalPrice | currency:'EUR' }}</p>
+    </div>
+  }
+  @empty {
+    <p>Geen bestellingen :(</p>
+  }
+</div>
+
+
+
+
+
