@@ -66,9 +66,18 @@ export class AuthService {
     return this.getUser()?.role ?? null;
   }
 
-  public saveUser(user: any): void {
+  async saveUser(user: any): Promise<void> {
     if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('user', JSON.stringify(user));
+
+      const encoder = new TextEncoder();
+      const data = encoder.encode(user.email);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+      const userToSave = { ...user, email: hashHex };
+
+      localStorage.setItem('user', JSON.stringify(userToSave));
     }
   }
 }
