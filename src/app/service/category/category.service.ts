@@ -8,7 +8,7 @@ import {Category} from '../../model/category';
 })
 export class CategoryService {
 
-  private apiServerUrl = 'http://localhost:8080';
+  private apiServerUrl = 'https://webshop-backend-v4jm3.ondigitalocean.app';
 
   constructor(private http: HttpClient) {}
 

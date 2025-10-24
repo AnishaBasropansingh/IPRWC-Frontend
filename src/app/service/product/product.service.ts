@@ -10,7 +10,7 @@ import {CreateProduct} from '../../model/createProduct';
 })
 
 export class ProductService {
-  private apiServerUrl = 'http://localhost:8080';
+  private apiServerUrl = 'https://webshop-backend-v4jm3.ondigitalocean.app';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 

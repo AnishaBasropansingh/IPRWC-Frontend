@@ -8,7 +8,7 @@ import { LoginResponse } from '../../model/LoginResponse';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiServerUrl = 'http://localhost:8080';
+  private apiServerUrl = 'https://webshop-backend-v4jm3.ondigitalocean.app';
 
   constructor(
     private http: HttpClient,

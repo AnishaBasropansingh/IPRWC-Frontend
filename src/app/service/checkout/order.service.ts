@@ -11,7 +11,7 @@ import {OrderDTO} from '../../model/OrderDTO';
   providedIn: 'root'
 })
 export class OrderService {
-  private apiServerUrl = 'http://localhost:8080';
+  private apiServerUrl = 'https://webshop-backend-v4jm3.ondigitalocean.app';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
