@@ -2,7 +2,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {Home} from './page/home/home';
 import {ProductComponent} from './page/product/product.component';
 import {About} from './page/about/about';
-import {NgModule} from '@angular/core';
+import {NgModule, Renderer2} from '@angular/core';
 import {ProductDetailComponent} from './component/features/products/product-detail/product-detail.component';
 import {LoginFormComponent} from './component/features/login/login-form/login-form.component';
 import {RegisterFormComponent} from './component/features/register/register-form/register-form.component';
@@ -19,6 +19,7 @@ import {CartComponent} from './component/features/cart/cart-details/cart.compone
 import {OrderDetailsComponent} from './component/features/checkout/order-details/order-details.component';
 import {OrderComponent} from './page/order/order.component';
 import {UserGuard} from './guard/UserGuard';
+import {RenderMode} from '@angular/ssr'
 
 export const routes: Routes = [
   { path: '', component: Home },
