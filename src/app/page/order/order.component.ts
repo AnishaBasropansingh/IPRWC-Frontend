@@ -24,15 +24,17 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {  }
 
   getProductCounts(products: Product[]): { product: Product, quantity: number }[] {
-    const counts: { [key: number]: { product: Product, quantity: number } } = {};
+    const counts = new Map<number, { product: Product, quantity: number }>();
 
     products.forEach(p => {
-      if (!counts[p.product_id]) {
-        counts[p.product_id] = { product: p, quantity: 0 };
+      const existing = counts.get(p.product_id);
+      if (existing) {
+        existing.quantity++;
+      } else {
+        counts.set(p.product_id, { product: p, quantity: 1 });
       }
-      counts[p.product_id].quantity++;
     });
 
-    return Object.values(counts);
+    return Array.from(counts.values());
   }
-}
+  }

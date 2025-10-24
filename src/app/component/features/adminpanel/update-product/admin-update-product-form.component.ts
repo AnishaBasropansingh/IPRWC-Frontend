@@ -5,13 +5,11 @@ import { Observable, combineLatest, of } from 'rxjs';
 import { ProductService } from '../../../../service/product/product.service';
 import { CategoryService } from '../../../../service/category/category.service';
 import { Category } from '../../../../model/category';
-import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-update-product',
   templateUrl: './admin-update-product-form.component.html',
   imports: [
-    AsyncPipe,
     FormsModule,
     ReactiveFormsModule
   ],

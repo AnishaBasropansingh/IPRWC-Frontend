@@ -32,18 +32,13 @@
 
     <div class="form-group">
       <label for="categorie_id">Categorie ID</label>
-      <input id="categorie_id" type="number" [(ngModel)]="categorie_id" name="categorie_id" required />
+      <input id="categorie_id" type="number" [(ngModel)]="categorie_id" name="categorie_id" placeholder="1: Merch, 2: Figueren, 3: Manga" required />
     </div>
 
-    <div class="form-group">
-      <label for="categorie_name">Categorie Naam</label>
-      <input id="categorie_name" type="text" [(ngModel)]="categorie_name" name="categorie_name" required />
-    </div>
-
-    <div class="form-group">
-      <label for="imageUrl">Afbeelding URL (optioneel)</label>
-      <input id="imageUrl" type="text" [(ngModel)]="imageUrl" name="imageUrl" />
-    </div>
+<!--    <div class="form-group">-->
+<!--      <label for="imageUrl">Afbeelding URL (optioneel)</label>-->
+<!--      <input id="imageUrl" type="text" [(ngModel)]="imageUrl" name="imageUrl" />-->
+<!--    </div>-->
 
     <button type="submit" class="btn">Product aanmaken</button>
   </form>

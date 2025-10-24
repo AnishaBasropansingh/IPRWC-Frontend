@@ -21,16 +21,16 @@
     <input id="stock" type="number" formControlName="stock" />
   </div>
 
-  <div class="form-group">
-    <label for="category">Categorie:</label>
-    <select id="category" formControlName="category">
-      @if (categories$ | async; as categoryList) {
-        @for (cat of categoryList; track cat.id || cat.name) {
-          <option [value]="cat.id">{{ cat.name }}</option>
-        }
-      }
-    </select>
-  </div>
+<!--  <div class="form-group">-->
+<!--    <label for="category">Categorie:</label>-->
+<!--    <select id="category" formControlName="category">-->
+<!--      @if (categories$ | async; as categoryList) {-->
+<!--        @for (cat of categoryList; track cat.id || cat.name) {-->
+<!--          <option [value]="cat.id">{{ cat.name }}</option>-->
+<!--        }-->
+<!--      }-->
+<!--    </select>-->
+<!--  </div>-->
 
   <button type="submit" class="btn save">Opslaan</button>
 </form>

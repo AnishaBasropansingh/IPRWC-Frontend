@@ -46,32 +46,43 @@ export class CartComponent {
     return cartItems.reduce((sum, item) => sum + item.price, 0);
   }
 
-checkout() {
-  this.cartItems$.pipe(take(1)).subscribe(cartItems => {
-    if (cartItems.length === 0) {
-      alert('Je winkelwagen is leeg!');
-      return;
-    }
-
-    const order = {
-      user_id: this.authService.getUserId(),
-      product_id: cartItems.map(p => p.product_id),
-      totalPrice: this.getTotal(cartItems),
-      orderDate: new Date().toISOString()
-    };
-
-    this.orderService.createOrder(order).subscribe({
-      next: () => {
-        alert('Bestelling succesvol geplaatst!');
-        this.cartService.clearCart();
-        this.router.navigate(['/order']);
-      },
-      error: (err) => {
-        console.error(err);
-        alert('Er is iets misgegaan bij het plaatsen van de bestelling.');
+  checkout() {
+    this.cartItems$.pipe(take(1)).subscribe(cartItems => {
+      if (cartItems.length === 0) {
+        alert('Je winkelwagen is leeg!');
+        return;
       }
+
+      const outOfStockItems = cartItems.filter(item => {
+        const stock = this.cartService.getStock(item.product_id);
+        return !stock || stock < item.quantity;
+      });
+
+      if (outOfStockItems.length > 0) {
+        const names = outOfStockItems.map(p => `${p.name} (voorraad: ${this.cartService.getStock(p.product_id) || 0})`).join('\n');
+        alert(`De volgende producten zijn niet op voorraad of te veel besteld:\n\n${names}`);
+        return;
+      }
+
+      const order = {
+        user_id: this.authService.getUserId(),
+        product_id: cartItems.map(p => p.product_id),
+        totalPrice: this.getTotal(cartItems),
+        orderDate: new Date().toISOString()
+      };
+
+      this.orderService.createOrder(order).subscribe({
+        next: () => {
+          alert('Bestelling succesvol geplaatst!');
+          this.cartService.clearCart();
+          this.router.navigate(['/order']);
+        },
+        error: (err) => {
+          console.error(err);
+          alert('Er is iets misgegaan bij het plaatsen van de bestelling.');
+        }
+      });
     });
-  });
-}
+  }
 
 }

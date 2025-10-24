@@ -33,15 +33,6 @@ export class OrderService {
     return this.http.get<Order>(`${this.apiServerUrl}/order/${order_id}`, {headers});
   }
 
-  // public createOrder(order : Order): Observable<Order> {
-  //   const token = localStorage.getItem('token');
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     Authorization: `Bearer ${token}`
-  //   });
-  //   return this.http.post<Order>(`${this.apiServerUrl}/order`, order, { headers });
-  // }
-
   public createOrder(orderDTO: OrderDTO): Observable<any> {
       const token = localStorage.getItem('token');
       const headers = new HttpHeaders({
