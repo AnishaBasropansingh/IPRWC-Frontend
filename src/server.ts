@@ -11,7 +11,6 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
-import cors from 'cors';
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -24,14 +23,6 @@ import cors from 'cors';
  * });
  * ```
  */
-
-
-app.use(cors({
-  origin: 'https://webshop-frontend-6bmtc.ondigitalocean.app',
-  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
-  allowedHeaders: ['Content-Type','Authorization'],
-  credentials: true
-}));
 
 /**
  * Serve static files from /browser
